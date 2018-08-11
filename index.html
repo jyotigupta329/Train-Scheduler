@@ -16,79 +16,92 @@
 
     <!-- Link for moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/trainSchedular.css">
+
 </head>
 
-<body>
+<body class="bg">
     <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Anytime is train time</h1>
+        <div>
+            <h1 class="display-4" style="background:pink; text-align: center">Anytime is train time</h1>
+        </div>
+    </div>
+
+    <!-- container for train schedule starts here -->
+    <div class="container" style="color: thistle; background: black">
+        <div class="row">
+            <div class="col">
+                <h2 style="text-align: center">Current train schedule</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm" id="train-time">
+               <strong>Train time</strong>
+            </div>
+            <div class="col-sm" id="desti-nation">
+               <strong>Destination</strong> 
+            </div>
+            <div class="col-sm" id="frequ-ency">
+               <strong>Frequency(min)</strong>
+            </div>
+            <div class="col-sm" id="next-arrival">
+               <strong> Next Arrival</strong>
+            </div>
+            <div class="col-sm" id="min-away">
+               <strong>Minutes away</strong>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- container for add train starts here -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 formInput" >
+                <h2>Add Train</h2>
+            </div>
+            <div class="col-md-4">
+
             </div>
         </div>
 
-        <!-- container for train schedule starts here -->
-        <div class="container" style="background: palegoldenrod">
-            <div class="row">
-                <div class="col">
-                    <h2 style="background: pink">Current train schedule</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm" id="train-time">
-                    Train time
-                </div>
-                <div class="col-sm" id="desti-nation">
-                    Destination
-                </div>
-                <div class="col-sm" id="frequ-ency">
-                    Frequency(min)
-                </div>
-                <!-- <div class="col-sm" id="next-arrival">
-                    Next Arrival
-                </div>
-                <div class="col-sm" id="min-away">
-                    Minutes away
-                </div> -->
-            </div>
-        </div>
-        <br>
-        <!-- container for add train starts here -->
+        <!-- form contents starts here -->
+        <div class="row">
+            <div class="col-md-4">
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 style="background: lightcyan">Add Train</h2>
-                </div>
             </div>
+            <div class="col-md-4 formInput">
+                <form>
+                    <div class="form-group">
+                        <label for="inputTrainName">Train Name</label>
+                        <input type="name" class="form-control" id="inputTrainName" placeholder="Train name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDestination">Destination</label>
+                        <input type="destination" class="form-control" id="inputDestination" placeholder="Destination">
+                    </div>
 
-            <!-- form contents starts here -->
-            <div class="row">
-                <div class="col">
-                    <form>
-                        <div class="form-group">
-                            <label for="inputTrainName">Train Name</label>
-                            <input type="name" class="form-control" id="inputTrainName" placeholder="Train name">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputDestination">Destination</label>
-                            <input type="destination" class="form-control" id="inputDestination" placeholder="Destination">
-                        </div>
-
-                        <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="inputTime">First train time(HH:MM-military time)</label>
-                        <input type="time" class="form-control" id="inputTime" placeholder="hh:mm" />
-                    </div> -->
+                        <input type="name" class="form-control" id="inputTime" placeholder="hh:mm" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="inputFrequency">Frequency(minutes)</label>
-                            <input type="frequency" class="form-control" id="inputFrequency" placeholder="Frequency">
-                        </div>
+                    <div class="form-group">
+                        <label for="inputFrequency">Frequency(minutes)</label>
+                        <input type="frequency" class="form-control" id="inputFrequency" placeholder="Frequency">
+                    </div>
 
-                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                    <button type="submit" id="submit" class="btn btn-primary buttonStyl">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+
             </div>
         </div>
+    </div>
     </div>
 
 

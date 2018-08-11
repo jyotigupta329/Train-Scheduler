@@ -1,0 +1,25 @@
+
+body, html {
+    height: 100%;
+    background-image: url("https://images.pexels.com/photos/1425/rails-train-path-straight.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+}
+
+/* .header{
+background-image: url("https://images.pexels.com/photos/1425/rails-train-path-straight.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+
+} */
+
+.bg{
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.formInput{
+    background: lightcyan;
+}
+
+.buttonStyl{
+align-self: center;
+}
