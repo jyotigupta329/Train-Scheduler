@@ -16,6 +16,11 @@ var database = firebase.database();
 
 $("#add-train").on("click", function () {
     $('#exampleModalCenter').modal();
+    $("#inputTrainName").val(" ");
+    $("#inputDestination").val(" ");
+    $("#inputTime").val(" ");
+    $("#inputFrequency").val(" ");
+
 })
 
 // On click submit button adds train to the list
@@ -111,6 +116,7 @@ database.ref().on("child_added", function (snapshot) {
     //     $("#inputFrequency").val(snapshot.val().frequency);
     //     $("#exampleModalCenter").modal();
     // });
+
 })
 
 // $document().on("click", "#tUpdate", function () {
