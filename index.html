@@ -11,7 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
 
-    <!-- Link for firebase -->
+    <!-- Link for firebase -->      
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
 
     <!-- Link for moment.js -->
@@ -21,14 +21,14 @@
 </head>
 
 <body class="bg">
-    <div class="container">
-        <div>
-            <h1 class="display-4" style="background:pink; text-align: center">Anytime is train time</h1>
-        </div>
+
+    <div>
+        <h1 class="display-4" style="background:black; color: thistle;text-align: center">Anytime is train time!!</h1>
     </div>
 
+
     <!-- container for train schedule starts here -->
-    <div class="container" style="color: thistle; background: black">
+    <div class="container" style="color: black; background: white; filter: opacity(0.7)">
         <div class="row">
             <div class="col">
                 <h2 style="text-align: center">Current train schedule</h2>
@@ -36,40 +36,57 @@
         </div>
         <div class="row">
             <div class="col-sm" id="train-time">
-               <strong>Train time</strong>
+                <strong>Train time</strong>
             </div>
             <div class="col-sm" id="desti-nation">
-               <strong>Destination</strong> 
+                <strong>Destination</strong>
             </div>
             <div class="col-sm" id="frequ-ency">
-               <strong>Frequency(min)</strong>
+                <strong>Frequency(min)</strong>
             </div>
             <div class="col-sm" id="next-arrival">
-               <strong> Next Arrival</strong>
+                <strong> Next Arrival</strong>
             </div>
             <div class="col-sm" id="min-away">
-               <strong>Minutes away</strong>
+                <strong>Minutes away</strong>
             </div>
+            <!-- <div class="col-sm" id="update-train">
+                <strong>Update</strong>
+            </div>
+            <div class="col-sm" id="delete-train">
+                <strong>Delete</strong>
+            </div> -->
         </div>
     </div>
     <br>
-    <!-- container for add train starts here -->
-
     <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+            </div>
+            <div class="col-sm-2">
+                <button class="button2 button" id="add-train">Add Train</button>
+            </div>
+            <div class="col-sm-5">
+            </div>
+        </div>
+
+
+    </div>
+    <!-- container for add train starts here -->
+    <!-- <div class="container" style="display:none" id="add-train-model">
         <div class="row">
             <div class="col-md-4">
 
             </div>
-            <div class="col-md-4 formInput" >
+            <div class="col-md-4 formInput">
                 <h2>Add Train</h2>
             </div>
             <div class="col-md-4">
 
             </div>
-        </div>
-
-        <!-- form contents starts here -->
-        <div class="row">
+        </div> -->
+    <!-- form contents starts here -->
+    <!-- <div class="row">
             <div class="col-md-4">
 
             </div>
@@ -98,15 +115,66 @@
                 </form>
             </div>
             <div class="col-md-4">
-
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+    <!-- Model to display result -->
+    <div id="add-train-model">
+        <!-- Modal content-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background:black; color: thistle">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Add Train !!</h3>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-8 formInput">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="inputTrainName">Train Name</label>
+                                        <input type="name" class="form-control" id="inputTrainName" placeholder="Train name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputDestination">Destination</label>
+                                        <input type="destination" class="form-control" id="inputDestination" placeholder="Destination">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputTime">First train time(HH:MM-military time)</label>
+                                        <input type="name" class="form-control" id="inputTime" placeholder="hh:mm" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputFrequency">Frequency(minutes)</label>
+                                        <input type="frequency" class="form-control" id="inputFrequency" placeholder="Frequency">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="submit" id="submit" class="btn btn-lg " style="background: thistle" data-dismiss="modal">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <!-- script -->
-    <script src="trainSchedular.js"></script>
+    <script src="./assets/javascript/trainSchedular.js"></script>
 </body>
 
 </html>

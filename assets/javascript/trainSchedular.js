@@ -14,6 +14,9 @@ firebase.initializeApp(config);
 // Saved the database object in a variable
 var database = firebase.database();
 
+$("#add-train").on("click", function () {
+    $('#exampleModalCenter').modal();
+})
 
 // On click submit button adds train to the list
 $("#submit").on("click", function (event) {
@@ -24,38 +27,36 @@ $("#submit").on("click", function (event) {
     var firstTrainTime = $("#inputTime").val();
     var frequency = $("#inputFrequency").val();
 
-    console.log("Train Name : " + trainName);
-    console.log("Train Destination : " + destination);
-    console.log("First Train time : " + firstTrainTime);
-    console.log(" Frequency : " + frequency);
-
-    database.ref().push({
+    var trainEntry = {
         "trainName": trainName,
         "destination": destination,
         "firstTrainTime": firstTrainTime,
         "frequency": frequency,
-    }, function () {
+    };
+
+    console.log("Train Entry:" + trainEntry);
+
+    database.ref().push(trainEntry, function () {
+        console.log("Successful Entry");
     });
 })
 
 database.ref().on("child_added", function (snapshot) {
-
     var firstTrainTime = snapshot.val().firstTrainTime;
     var frequency = snapshot.val().frequency;
 
     var convFirstTrainTime = moment(firstTrainTime, "HH:mm");
-    console.log("The First train time now is:" + convFirstTrainTime);
+    //console.log("The First train time now is:" + convFirstTrainTime);
 
     var currentTime = moment();
-    console.log("The time now is:" + currentTime);
+    //console.log("The time now is:" + currentTime);
 
 
     var difference = moment().diff(moment(convFirstTrainTime), "minutes");
-    console.log("The time difference is:" + difference);
-
+    //console.log("The time difference is:" + difference);
 
     var remainder = difference % frequency;
-    //console.log("Minutes Away: " + remainder);
+    //console.log(remainder);
 
     //Minute untill next train to arrive
     var minsTillNextTrain = frequency - remainder;
@@ -73,6 +74,12 @@ database.ref().on("child_added", function (snapshot) {
     var tFrequency = $("<tr>");
     var tnextArrival = $("<tr>");
     var tMinAway = $("<tr>");
+    var updateBtnRow = $("<tr>");
+    var tUpdate = $("<button>");
+    tUpdate.attr('id', snapshot.key);
+    updateBtnRow.append(tUpdate);
+
+    // var tDelete = $("<button>");
 
     // display the value using text attribute
     tName.text(snapshot.val().trainName);
@@ -80,15 +87,33 @@ database.ref().on("child_added", function (snapshot) {
     tFrequency.text(snapshot.val().frequency);
     tnextArrival.text(nextTrainArrival);
     tMinAway.text(minsTillNextTrain);
+    tUpdate.text("Update");
+    //tDelete.text("Delete");
+
+    $("#inputTrainName").val(snapshot.val().trainName);
+    $("#inputDestination").val(snapshot.val().destination);
+    $("#inputTime").val(snapshot.val().firstTrainTime);
+    $("#inputFrequency").val(snapshot.val().frequency);
 
 
     // Append the result to display
-    $("#train-time").append(tName);
-    $("#desti-nation").append(tdestination);
-    $("#frequ-ency").append(tFrequency);
-    $("#next-arrival").append(tnextArrival);
-    $("#min-away").append(tMinAway);
+    $("#train-time").append(tName).append("<br>");
+    $("#desti-nation").append(tdestination).append("<br>");
+    $("#frequ-ency").append(tFrequency).append("<br>");
+    $("#next-arrival").append(tnextArrival).append("<br>");
+    $("#min-away").append(tMinAway).append("<br>");
+    //$("#update-train").append(updateBtnRow).append("<br>");
+    // $("#delete-train").append(tDelete);
+    // $("#" + snapshot.key).on("click", function () {
+    //     $("#inputTrainName").val(snapshot.val().trainName);
+    //     $("#inputDestination").val(snapshot.val().destination);
+    //     $("#inputTime").val(snapshot.val().firstTrainTime);
+    //     $("#inputFrequency").val(snapshot.val().frequency);
+    //     $("#exampleModalCenter").modal();
+    // });
 })
 
-
+// $document().on("click", "#tUpdate", function () {
+//     alert("Cannot delete now !!");
+// })
 
